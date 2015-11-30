@@ -2,8 +2,8 @@
 //# File         : report_macros.svh
 //# Brief        : Report Package
 //# Author       : Kocha <kocha.lsifrontend@gmail.com> 
-//# Last Modified: 24-Dec-2013.
-//# Version      : 1.0.0
+//# Last Modified: 30-Nov-2015.
+//# Version      : 1.1.0
 //#==========================================================================#//
 package report_pkg;
 
@@ -16,6 +16,12 @@ package report_pkg;
     for(int i=0; i<(msg.len()+8); i++) $write(key);
     $write("\n");
     $write("\n");
+  endfunction
+
+  function void info_figlet(string msg, string font = "standard", string option = "");
+    string cmd;
+    cmd = $sformatf("figlet %s -f %s %s",option, font, msg);
+    $system(cmd);
   endfunction
 
   function void info_ok();
